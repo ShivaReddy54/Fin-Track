@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Account Sheet </title>
+    <link rel="stylesheet" href="/static/sheet.css">
+</head>
+<body>
+    <header>
+        <div class="headers">
+            <h3>{{ date }}</h3>
+            <h3>Om Sai Ram</h3>
+            <h3>{{ day }}</h3>
+        </div>
+    </header>
+    <hr>
+
+    <main>
+        <div class="main">
+            <div class="pagestotal" style="margin-left: 30px;">
+                <h4> Pages</h4>
+                {% for page in pages_total %}
+                <p>{{ page }}</p>
+                {% endfor %}
+                <hr>
+                <h4>Total: {{ pages }}</h4>
+            </div>
+
+            <div class="newacnts" style="margin-right: 30px;">
+                <h4>New Accounts</h4>
+                {% for account in accounts %}
+                <p>{{ account.0 }} = {{ account.1 }} = {{ account.2 }} = {{ account.3 }} </p>
+                {% endfor %}
+                <hr>
+                <h4> &emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14;&emsp14; {{ acnt_total }} &emsp14;&emsp14;&emsp14;&emsp14; {{ acnt_interest }} </h4>
+            </div>
+        </div>
+
+        <div class="acnts">
+            <p>Previous BF: {{ bf }}</p>
+            <p>Collected: {{ pages }}</p>
+            <p>Interest: {{ acnt_interest }}</p>
+            <p>Given: {{ acnt_total }}</p>
+            <p>Expenditure: {{ expenditures }}</p>
+            <hr>
+            <p>BF: {{ final }}</p>
+        </div>
+    </main>
+
+    <footer>
+        <button onclick="print()"> Print </button>
+        <p> By Shiva Reddy </p>
+    </footer>
+</body>
+</html>

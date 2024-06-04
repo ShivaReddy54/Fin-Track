@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Add Records </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/968900e84c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container">
+            <nav class="navbar navbar-expand-lg" style="text-align: center;">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">FinTrack.</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="/home">Home Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Add Records </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/checkdb"> View Records </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/account"> Manage Account </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/history"> Transaction History </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="container" style="text-align: center;">
+            <h1 class="font-monospace"> Add Records  </h1>
+        </div>
+    </header>
+    <br>
+
+    <main>
+        <div class="container mx-25 my-25">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="Name" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="Name" name="Name" placeholder="Enter your Name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="Date" name="Date" placeholder="DD-MM-YYYY" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="Pages" class="form-label">No of pages</label>
+            <input type="number" class="form-control" id="Pages" name="Pages" placeholder="Enter No of Pages" required>
+        </div>
+
+        <div id="inputs" class="mb-3"></div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+        <br> <br> <br>
+    </main>
+    <br> <br> <br>
+
+    <footer style="background-color: rgb(152, 196, 196);  position: relative; bottom: 0; width: 100%;">
+        <div class="container">
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"> <b> +91 1234567890 </b> </a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"> <i
+                                class="fa-brands fa-instagram"></i> </a></li>
+                    <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><i
+                                class="fa-brands fa-facebook"></i> </a></li>
+                </ul>
+                <p class="text-center text-body-secondary"> <b> Developed by: Shiva Reddy </b> </p>
+                <p class="text-center text-body-secondary">© 2024 Company, Inc</p>
+            </footer>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        document.getElementById('Pages').addEventListener('input', function (e) {
+            var count = parseInt(e.target.value);
+            var inputsContainer = document.getElementById('inputs');
+            inputsContainer.innerHTML = '';
+
+            for (var i = 0; i < count; i++) {
+                var inputDiv = document.createElement('div');
+                inputDiv.classList.add('mb-3');
+                var label = document.createElement('h5');
+                label.textContent = 'Enter Amount for Page: ' + (i + 1);
+                label.classList.add('form-label');
+                inputDiv.appendChild(label);
+                var input = document.createElement('input');
+                input.setAttribute('type', 'text');
+                input.setAttribute('name', 'amount_' + (i + 1)); // Set the name attribute
+                input.classList.add('form-control');
+                inputDiv.appendChild(input);
+                inputsContainer.appendChild(inputDiv);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
